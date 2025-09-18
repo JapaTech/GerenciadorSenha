@@ -37,26 +37,47 @@ void CriaArquivorSenha()
 
 void AdicionarSenha()
 {
-    Console.WriteLine("Digite o nome do serviço");
-    string nomeServico = Console.ReadLine();
-    Console.WriteLine("Digite o nome do usuário");
-    string nomeUsuario = Console.ReadLine();
-    Console.WriteLine("Digite o email");
-    string email = Console.ReadLine();
-    Console.WriteLine("Digite a senha");
-    string senha = Console.ReadLine();
-    gerenciadorSenha.CadastrarNovoServico(nomeServico, nomeUsuario, email, senha);
+    bool adicionarNovo = true;
 
-    Console.WriteLine("Digite 1 para adicionar uma nova senha");
-    Console.WriteLine("Digite qualquer outra coisa para salvar");
-    string resposta = Console.ReadLine();
-    if (resposta == "1")
+    while (adicionarNovo)
     {
-        AdicionarSenha();
+        Console.WriteLine("----Novo serviço----");
+        Console.Write("Digite o nome do serviço: ");
+        string nomeServico = Console.ReadLine();
+
+        Console.Write("Digite o nome do usuário: ");
+        string nomeUsuario = Console.ReadLine();
+
+        Console.Write("Digite o email: ");
+        string email = Console.ReadLine();
+
+        Console.Write("Digite a senha: ");
+        string senha = Console.ReadLine();
+
+        bool casdratoRealizado = false;
+
+        while (!casdratoRealizado)
+        {
+            casdratoRealizado = gerenciadorSenha.CadastrarNovoServico(nomeServico, nomeUsuario, email, senha);
+
+            if (!casdratoRealizado)
+            {
+                Console.WriteLine("Digite 'sim' para corrigir as informações");
+                string corrigir = Console.ReadLine().ToLower();
+                if (corrigir != "sim")
+                {
+                    return;
+                }
+            }
+        }
+
+        Console.WriteLine("Digite 'sim' para adicionar uma nova senha");
+        Console.WriteLine("Ou Digite qualquer outra coisa para salvar");
+        string resposta = Console.ReadLine().ToLower();
+
+        adicionarNovo = resposta == "sim";
     }
-    else
-    {
-        gerenciadorSenha.Salvar();
-        Console.WriteLine("Saindo...");
-    }
+
+    gerenciadorSenha.Salvar();
+    Console.WriteLine("Saindo...");
 }

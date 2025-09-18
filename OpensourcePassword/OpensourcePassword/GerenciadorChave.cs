@@ -14,8 +14,12 @@ namespace OpensourcePassword
         {
             var chave = RandomNumberGenerator.GetBytes(32);
             string chaveHex = Convert.ToHexString(chave);
-            Console.WriteLine($"Sua chave é {chaveHex}");
-            Console.ReadKey();
+            Console.WriteLine("Guarde sua chave. Sem ela você não acessará seu arquivo");
+            EscreverTextos.EscreverEntreCaracteres('!', chaveHex);
+            Console.WriteLine("\n");
+            EscreverTextos.PressioneQualquerTecla("Pressione uma tecla");
+            EscreverTextos.PressioneQualquerTecla("\n!- Se você guardou sua chave, pressione uma tecla para continuar -!");
+
             return chave;
         }
 

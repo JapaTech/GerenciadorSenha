@@ -1,10 +1,6 @@
 ﻿using OpensourcePassword.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+
 
 namespace OpensourcePassword
 {
@@ -22,7 +18,7 @@ namespace OpensourcePassword
             this.caminhoCompleto = caminhoCompleto;
         }
 
-        public void CadastrarNovoServico(string nomeServico, string usuario, string email, string senha)
+        public bool CadastrarNovoServico(string nomeServico, string usuario, string email, string senha)
         {
             DadosDoServico novoServico = new DadosDoServico
             {
@@ -35,17 +31,20 @@ namespace OpensourcePassword
             Console.WriteLine("Verifique as informações");
             Console.WriteLine(novoServico);
 
-            Console.WriteLine("Está correto?");
+            Console.WriteLine("Digite 'sim' se as informações estiverem corretas");
             string resposta = Console.ReadLine().ToLower();
 
-            if (resposta != "sim" && resposta != "s")
+            if (resposta == "sim" || resposta == "s")
             {
                 dados.Add(novoServico);
                 Console.WriteLine("Serviço adicionado com sucesso!");
+                return true;
             }
             else
             {
                 Console.WriteLine("Operação cancelada. Serviço não adicionado.");
+                //***Adicionar lógica para corrigir as informações
+                return false;
             }
         }
 
