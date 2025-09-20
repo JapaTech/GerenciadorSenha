@@ -1,4 +1,5 @@
 ﻿using OpensourcePassword.Modelos;
+using OpensourcePassword.Utils;
 using System.Text.Json;
 
 
@@ -13,7 +14,7 @@ namespace OpensourcePassword
 
         public GerenciadorSenha(byte[] chave, string caminhoCompleto, string nomeDoArquivo)
         {
-            this.nomeDoArquivo = nomeDoArquivo;
+            this.nomeDoArquivo = TipoDeArquivo.TransformaArquivoEmOpsafe(nomeDoArquivo);
             this.chave = chave;
             this.caminhoCompleto = caminhoCompleto;
         }
@@ -28,7 +29,9 @@ namespace OpensourcePassword
                 Password = senha
             };
 
-            Console.WriteLine("Verifique as informações");
+            Console.WriteLine();
+            EscreverTextos.EscreverEntreCaracteres('-', "Verifique as informações");
+            Console.WriteLine();
             Console.WriteLine(novoServico);
 
             Console.WriteLine("Digite 'sim' se as informações estiverem corretas");
@@ -37,7 +40,7 @@ namespace OpensourcePassword
             if (resposta == "sim" || resposta == "s")
             {
                 dados.Add(novoServico);
-                Console.WriteLine("Serviço adicionado com sucesso!");
+                Console.WriteLine("Serviço adicionado com sucesso!\n    ");
                 return true;
             }
             else

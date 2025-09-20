@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpensourcePassword
+namespace OpensourcePassword.Utils
 {
     public static class EscreverTextos
     {

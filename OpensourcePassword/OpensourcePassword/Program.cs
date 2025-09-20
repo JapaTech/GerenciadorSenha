@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using OpensourcePassword;
 using OpensourcePassword.Modelos;
+using OpensourcePassword.Utils;
 
 GerenciadorSenha gerenciadorSenha ;
 
@@ -41,7 +42,9 @@ void AdicionarSenha()
 
     while (adicionarNovo)
     {
-        Console.WriteLine("----Novo serviço----");
+        Console.WriteLine();
+        EscreverTextos.EscreverEntreCaracteres('=', "Adicionar nova senha");
+        Console.WriteLine();
         Console.Write("Digite o nome do serviço: ");
         string nomeServico = Console.ReadLine();
 
