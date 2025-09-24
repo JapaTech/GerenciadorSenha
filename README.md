@@ -39,8 +39,8 @@ https://github.com/user-attachments/assets/b1d0d678-8d94-4102-8288-56835d45aeb5
 - A parte de corrigir a entrada de um serviço errado não funciona corretamente
 
 ## Funcionalidades para implementar no futuro
--Edição de arquivo de senha
--Pesquisar um serviço ou nome de usuário específico
+- Edição de arquivo de senha
+ - Pesquisar um serviço ou nome de usuário específico
 
 
 
